@@ -96,3 +96,29 @@ function updateCaretPosition(event, prevValue, prevIdx) {
 
   return nextPosition;
 }
+
+
+
+/** 
+idx:     01234567890123
+phase1:  123            length: 0 - 3, raw length: 0 - 3
+phase2:  (123) 456      length: 7 - 9, raw length: 4 - 6
+phase3:  (123) 456-7    length: 11 - 14 raw length: 7 - 10
+phase3:  (123) 456-7890
+
+Changes
+idx:     0123456789
+phase1:  123
+idx:     0123456789
+phase2:  (123) 4
+
+phase 1 => 2 (length: 0 - 3 => 7 - 9)
+indices 0-2, delta +1;
+indices 3, delta +3;
+
+phase 2 => 1
+indices 0-2, delta -1;
+index   6,   delta 
+
+
+ */
